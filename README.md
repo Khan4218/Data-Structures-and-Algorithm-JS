@@ -19,7 +19,7 @@ Welcome to your DSA journey with JavaScript! This roadmap is designed to build s
 - [✅] Big O Notation (Time & Space)
 - [✅] Common Complexities (`O(1)`, `O(n)`, `O(log n)`, etc.)
 - [✅] Analyzing Loops and Nested Structures
-- [ ] Memory Usage
+- [✅] Memory Usage
 
 ---
 
