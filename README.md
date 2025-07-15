@@ -96,7 +96,7 @@ Welcome to your DSA journey with JavaScript! This roadmap is designed to build s
 
 | Phase | Topic | Status |
 |-------|-------|--------|
-| 1     | Time & Space Complexity | ⬜ Not Started |
+| 1     | Time & Space Complexity | ✅Completed |
 | 2     | Arrays | ⬜ Not Started |
 | 2     | Strings | ⬜ Not Started |
 | 3     | Sorting Algorithms | ⬜ Not Started |
