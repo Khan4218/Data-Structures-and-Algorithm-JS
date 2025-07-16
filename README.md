@@ -26,7 +26,7 @@ Welcome to your DSA journey with JavaScript! This roadmap is designed to build s
 ### 🔢 Phase 2: Core Data Structures
 
 #### 📦 Linear Structures
-- [ ] Arrays
+- [✅] Arrays
 - [ ] Strings
 - [ ] Stacks
 - [ ] Queues
