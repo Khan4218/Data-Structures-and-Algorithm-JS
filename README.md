@@ -28,7 +28,7 @@ Welcome to your DSA journey with JavaScript! This roadmap is designed to build s
 #### 📦 Linear Structures
 - [✅] Arrays
 - [✅] Strings
-- [ ] Stacks
+- [✅] Stacks
 - [ ] Queues
 
 #### 🔗 Linked Structures
