@@ -73,26 +73,26 @@
 
 
 
-function longestSubarray(nums, k) {
-  let left = 0; 
-  let sum = 0;
-  let maxLen = 0;
+// function longestSubarray(nums, k) {
+//   let left = 0; 
+//   let sum = 0;
+//   let maxLen = 0;
 
-  for (let right = 0; right < nums.length; right++) {  //right = 0; sum = 1 ; left = 0 ; maxlen = 1
-    sum += nums[right];
+//   for (let right = 0; right < nums.length; right++) {  //right = 0; sum = 1 ; left = 0 ; maxlen = 1
+//     sum += nums[right];
 
-    while (sum > k) {
-      sum -= nums[left];
-      left++;
-    }
+//     while (sum > k) {
+//       sum -= nums[left];
+//       left++;
+//     }
 
-    maxLen = Math.max(maxLen, right - left + 1);
-  }
+//     maxLen = Math.max(maxLen, right - left + 1);
+//   }
 
-  return maxLen;
-}
+//   return maxLen;
+// }
 
-console.log(longestSubarray([1, 2, 1, 0, 1, 1, 0], 4));
+// console.log(longestSubarray([1, 2, 1, 0, 1, 1, 0], 4));
 
 /*
 first iteration 
@@ -150,4 +150,51 @@ left = 2
 window = [2..6] = //[1,0,1,1,0]
 maxleng = 4, 6 - 2 + 1 = // 5, 5
 */
+
+// Here’s your task (LeetCode #3):
+
+// Problem:
+// Given a string s, find the length of the longest substring without repeating characters.
+
+// Example:
+// Input: s = "abcabcbb"
+// Output: 3
+// Explanation: The answer is "abc", which has length 3.
+
+function uniqueSubstring(str) {
+ let left = 0
+ let set =  new Set()
+ 
+ let maxlength = 0
+  
+ for(let right = 0 ; right < str.length ; right ++) {
+
+   
+   
+   while(set.has(str[right])) {
+    
+    set.delete(str[left])
+    left++
+
+  }
+  set.add(str[right])
+
+  maxlength = Math.max(maxlength, right - left + 1)
+  }
+  
+  return maxlength
+}
+
+console.log(uniqueSubstring("abcabcbb"));
+
+
+//first we are taking two pointers left and right and we keep right moving forward 
+//we use set here to store a character as we are not working with numbers 
+//we will keep the left pointer at begining and move our right pointer forward 
+// we keep on adding str[right] to our set variable untill
+//the same character is found when it is found the while loop runs 
+//we move the left pointer forward = "bcabcbb"
+//and increase the left so now left pointer will be on b which is str[left]
+//we need to know the max length so we do Math.max(maxlength, right - left + 1 )
+//finally output we get will be 3 
 
