@@ -332,3 +332,30 @@ console.log(uniqueSubstring("pwwkew"));
 // add 'w' → set={'k','e','w'} → window length = right-left+1 = 3 → max still 3
 
 // Final max = 3 (examples of substrings: "wke" or "kew").
+
+
+// For the input string "abcabcbb", what will be the length of the longest substring without repeating characters?
+
+// A) 2
+// B) 3
+// C) 4
+// D) 5
+
+// Take your time — reason it step by step using your left/right pointer logic and tell me your final answer.
+
+/*
+start right = 0; left = 0; maxlength = 0 ; set = {}
+right = 0 ; condition check false ; set = {a}; left = 0 ; maxlength = 0, 0 - 0 + 1 = 1 //1
+right = 1 ; condition check false ; set = {a,b}; left = 0; maxlength = 1, 1 - 0 + 1 = 2 // 2
+right = 2; consition check false ; set = {a,b,c}; left = 0 ; maxlength = 2, 2 - 0 + 1 = 3 // 3
+right = 3 ; condition check true ; set = {b,c}; left = 1 ; maxlength = 3, 3 - 1 + 1 = 3 // 3
+3.1; condition check again false ; set = {b,c}; left = 1 ; maxlength = 3, 3 - 1 + 1 = 3 // 3
+right = 4 ; condition check true ; set = {c}; left = 2 ; maxlength = 3, 4 - 2 + 1 = 3 // 3 
+4.1 consition check again false ; add set = {c, b} ; left = 2 ; maxlength = 3, 4 - 2 + 1 = 3 // 3 
+right = 5 ; cndition check true ; set = {b}; left = 3; maxlength = 3, 5 - 3 + 1 = 3 // 3 
+5.1 condition check again flase ; set = {b, c}; left = 3 ; maxlength = 3, 5 - 3 + 1 = 3 // 3 
+right = 6 ; condition check true ; set = {c}; left = 4 ; maxlength = 3, 6 - 4 + 1 = 3 // 3
+6.1 condition check agin false ; set = {c,b}; left = 4 ; maxlength = 3, 6 - 4 + 1 = 3 // 3 
+right = 7 ; conditon check true ; set = {b}; left = 5 ; maxlength = 3, 7 - 5 + 1 = 3 // 3
+7.1 check conditio again final output 3
+*/
