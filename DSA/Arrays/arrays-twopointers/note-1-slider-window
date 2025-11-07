@@ -1,0 +1,84 @@
+// Step-by-step explanation (iteration by iteration)
+
+// Start:
+
+// left = 0, sum = 0, minLen = Infinity
+
+// right = 0:
+
+// add 2 → sum = 2 (window [0..0])
+
+// sum < target → no shrink
+
+// right = 1:
+
+// add 3 → sum = 5 (window [0..1])
+
+// sum < target → no shrink
+
+// right = 2:
+
+// add 1 → sum = 6 (window [0..2])
+
+// sum < target → no shrink
+
+// right = 3:
+
+// add 2 → sum = 8 (window [0..3])
+
+// now sum >= 7:
+
+// windowLen = 4 → minLen = 4
+
+// shrink by removing nums[left]=2 → left becomes 1, sum becomes 6
+
+// now sum < 7 → stop shrinking
+
+// right = 4:
+
+// add 4 → sum = 10 (window [1..4])
+
+// sum >= 7:
+
+// windowLen = 4 → minLen = min(4,4)=4 (but next shrinks reduce it)
+
+// remove nums[left]=3 → left=2, sum=7 (window [2..4])
+
+// sum >= 7:
+
+// windowLen = 3 → minLen = 3
+
+// remove nums[left]=1 → left=3, sum=6
+
+// now sum < 7 → stop
+
+// right = 5:
+
+// add 3 → sum = 9 (window [3..5])
+
+// sum >= 7:
+
+// windowLen = 3 → minLen = min(3,3)=3
+
+// remove nums[left]=2 → left=4, sum=7 (window [4..5])
+
+// sum >= 7:
+
+// windowLen = 2 → minLen = 2
+
+// remove nums[left]=4 → left=5, sum=3
+
+// now sum < 7 → stop
+
+// End of loop: minLen = 2 → return 2
+
+// That corresponds to subarray [4,3] (indices 4..5).
+
+// Why this is efficient
+
+// Each element is added once (when right moves) and removed at most once (when left moves). So both pointers move O(n) total.
+
+// Time complexity: O(n)
+
+// Space complexity: O(1) (only a few variables used)
+

@@ -1,0 +1,111 @@
+Perfect — let’s go through that section slowly and visually, so you can clearly see how and why those steps happen.
+We’re focusing on this part of the example:
+
+nums = [2, 3, 1, 2, 4, 3], target = 7
+At this point in the loop, we’re around right = 4 and right = 5.    
+//right=0 added=2 sum=2 (window=[0..0])
+right=1 added=3 sum=5 (window=[0..1])
+right=2 added=1 sum=6 (window=[0..2])
+right=3 added=2 sum=8 (window=[0..3])
+
+
+1. When right = 4
+
+Our window is currently [1..4] → [3, 1, 2, 4]
+
+sum before adding 4: 6
+
+add nums[right] = 4 → sum = 10
+
+Now sum = 10 >= target (7) → time to shrink from the left to make it as small as possible but still ≥ 7.
+
+Step 1 (before shrink)
+
+left = 1
+
+right = 4
+
+sum = 10
+
+window length = right - left + 1 = 4
+→ minLen = min(Infinity, 4) = 4
+
+So smallest so far is 4.
+
+Step 2 (shrink from left)
+
+Remove nums[left] = 3
+
+new sum = 10 - 3 = 7
+
+left = 2
+Now window = [2..4] → [1, 2, 4]
+
+Still sum = 7 ≥ target (so we can try shrinking more).
+
+Step 3 (shrink again)
+
+Window length = right - left + 1 = 3
+→ minLen = min(4, 3) = 3 (we found a smaller valid window)
+
+Remove nums[left] = 1
+
+new sum = 7 - 1 = 6
+
+left = 3
+Now window = [3..4] → [2, 4]
+
+Now sum = 6 < target → stop shrinking.
+At this point, the smallest valid window length so far is 3.
+
+2. When right = 5
+
+Now we move right → add nums[5] = 3
+
+current window: [3..5] → [2, 4, 3]
+
+sum = 6 (previous) + 3 = 9
+
+sum = 9 ≥ target → shrink again from left.
+
+Step 1
+
+Window length = right - left + 1 = 3
+→ minLen = min(3, 3) = 3
+
+Remove nums[left] = 2
+
+sum = 9 - 2 = 7
+
+left = 4
+Now window = [4..5] → [4, 3]
+
+Still sum = 7 ≥ target.
+
+Step 2
+
+Window length = 2
+→ minLen = min(3, 2) = 2
+
+Remove nums[left] = 4
+
+sum = 7 - 4 = 3
+
+left = 5
+Now window = [5..5] → [3]
+
+Now sum = 3 < 7 → stop shrinking.
+
+So the final smallest window that had sum ≥ 7 was [4, 3] (indices 4..5), with length = 2.
+That’s why the result is 2.
+
+Why it’s efficient
+
+Because:
+
+Every number is added once (when right moves)
+
+And removed once (when left moves)
+No nested loops → total operations ≈ 2n → O(n) time.
+
+And we only use 3–4 variables (left, right, sum, minLen) → O(1) space.
