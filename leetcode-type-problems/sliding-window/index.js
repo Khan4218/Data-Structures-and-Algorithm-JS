@@ -185,7 +185,7 @@ function uniqueSubstring(str) {
   return maxlength
 }
 
-console.log(uniqueSubstring("abcabcbb"));
+console.log(uniqueSubstring("pwwkew"));
 
 
 //first we are taking two pointers left and right and we keep right moving forward 
@@ -198,3 +198,137 @@ console.log(uniqueSubstring("abcabcbb"));
 //we need to know the max length so we do Math.max(maxlength, right - left + 1 )
 //finally output we get will be 3 
 
+
+// Perfect — here’s your String Sliding Window Quiz (Longest Unique Substring) 🧠
+
+// Answer carefully — most are concept-based like interview rounds:
+
+// 1. What’s the main reason we use a Set in this problem?
+// A) To count character frequency
+// B) To store unique characters in the current window
+// C) To store all characters from the string
+// D) To sort the string alphabetically
+
+//1. B we store unique characters and check if we have any duplicates in set 
+
+// 2. When does the while(set.has(str[right])) loop run?
+// A) When the current character is new
+// B) When the current character is already in the set
+// C) When left reaches the end
+// D) When the string is empty
+
+//2. B when the current charcter is in the set we will find the duplicate
+
+// 3. Why do we use set.delete(str[left]) inside the while loop?
+// A) To remove duplicate characters from the set
+// B) To increase max length
+// C) To reset the window completely
+// D) To count total characters removed
+
+//3. A we remove duplicate charcters from the set we are moving left pointer forward after doing it 
+
+// 4. What does Math.max(maxlength, right - left + 1) calculate?
+// A) The length of the entire string
+// B) The current window’s length and keeps track of the largest so far
+// C) The index of the right pointer
+// D) The number of duplicate characters
+
+//4. B it tracks the current window length and it will keep tarck of largest so far
+
+// 5. What is the time complexity of this solution?
+// A) O(n²)
+// B) O(n)
+// C) O(log n)
+// D) O(1)
+//B  O(n) beacuse we are using two pointers if not we would have to loop mre than twice n^2
+
+// 6. What is the space complexity of this solution?
+// A) O(n) because we use a Set that can store up to all characters
+// B) O(1)
+// C) O(log n)
+// D) O(n²)
+
+// A beacuse we are using a memory to store charcters
+
+// 7. (Code reasoning)
+// For input "pwwkew", what’s the output?
+// A) 2
+// B) 3
+// C) 4
+// D) 5
+// ans 3
+// 7 "pwwkew"
+// pointer left at p pointer right at w 
+//initial left = 0 ;set = {p} right = 0 maxlegth = 0, 0 - 0 + 1 = 1 // maxlenth = 1// p 
+
+//1st iteration
+// right = 1 set = {p,w} left = 0; maxleng = 1, 1 - 0 + 1 = 2  maxlenth = 2/// p,w
+
+//2nd iteration 
+//right = 2 
+//left = 0
+//checks while loop if str[right] exist in this case it is true 
+//set.delete(str[left]) = p now
+//set = {w}
+//left = 1 
+//maxlength = 2, 2 - 1 + 1 = 2   maxlenth = 2
+//while loop runs again see the condition statisfy if not it will return 
+
+//3rd iteration 
+//right = 3 
+//while loop checks if str[3] = k has in set so in this is it is not while loop does not run 
+//add to the set set = {w,k}
+//left = 1 
+//maxlength = 2, 3 - 1 + 1 = 3 maxlenth = 3
+
+//4th iteration 
+//right = 4 
+//checks while loop e it is not in the set while loop does not run 
+//add to the set set = {w,k,e}
+//left = 1 
+//maxlength = 3, 4 - 1 + 1 = 4 = maclength = 4
+
+//5th iteration 
+//right = 5 
+//left = 1
+//check while loop str[right] exist in this case it is true so while lopp runs
+//set = set.delete(str[1]) = w removes {k,e,w}
+//left ++ 
+//left = 2 
+//maxlength = 4, 5 - 2 + 1 = 4 
+//final max window length = 3
+//Done
+
+
+
+// For "pwwkew" the output is 3 (option B).
+// Here’s a slow dry-run so you see why:
+
+// string: p w w k e w
+// index: 0 1 2 3 4 5
+
+// start: left=0, right moves, set={}, max=0
+
+// right=0: char='p' — not in set → add 'p' → set={'p'} → window length = 1 → max=1
+
+// right=1: char='w' — not in set → add 'w' → set={'p','w'} → window length = 2 → max=2
+
+// right=2: char='w' — already in set → enter while:
+
+// remove str[left]='p' → set becomes {'w'} , left=1 (still set.has('w'))
+
+// still duplicate → remove str[left]='w' → set becomes {} , left=2
+
+// exit while, then add 'w' → set={'w'} → window length = right-left+1 = 1 → max=2
+
+// right=3: char='k' — add → set={'w','k'} → window length=2 → max=2
+
+// right=4: char='e' — add → set={'w','k','e'} → window length=3 → max=3
+
+// right=5: char='w' — duplicate → while loop:
+
+// remove str[left]='w' (left=2) → set={'k','e'} , left=3 → now 'w' not in set
+
+// add 'w' → set={'k','e','w'} → window length = right-left+1 = 3 → max still 3
+
+// Final max = 3 (examples of substrings: "wke" or "kew").
