@@ -451,4 +451,71 @@
 // Assume all lowercase letters for now.
 
 
+// function isAnagram(s, t) {
+
+//   if(s.length !== t.length) return false
+
+//   let sFreq = {}
+//   let tFreq = {}
+
+  
+//   for (let char of s) {
+//     sFreq[char] = (sFreq[char] || 0) + 1
+
+    
+//   }
+
+//   for (let char of t) {
+//     tFreq[char] = (tFreq[char] || 0) + 1
+
+    
+//   }
+
+//   for(let key in sFreq) {
+//     if(sFreq[key] !== tFreq[key]) {      
+//      return false
+//     }
+//   }
+
+//   return true
+
+// }
+
+// console.log(isAnagram("listen", "silent"));
+// console.log(isAnagram("hello", "world"));
+
+
+// 🧩 Challenge 1 — Valid Anagram
+
+// Write a function that returns true if s and t are anagrams of each other.
+
+// Example:
+
+// Input: s = "listen", t = "silent"
+// Output: true
+
+
+function isAnagram (s, t) {
+
+  if(s.length !== t.length) return false
+  
+  let frequency = {}
+
+  for(let char of s) {
+
+    frequency[char] = (frequency[char] || 0) + 1 
+
+  }
+
+  for(let char of t) {
+    if(!frequency[char]) return false 
+    frequency[char] -= 1
+  }
+  
+  return true
+
+}
+
+console.log(isAnagram("listen", "silent"));
+
 
