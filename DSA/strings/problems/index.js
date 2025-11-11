@@ -688,33 +688,33 @@
 
 // This will help you understand the inverse of compression and improve your string manipulation skills.
 
-function decompressString(s) {
-  let result = ""
-  let i = 0
+// function decompressString(s) {
+//   let result = ""
+//   let i = 0
 
-  while (i < s.length) {
-    let char = s[i]   // current letter
-    i++
+//   while (i < s.length) {
+//     let char = s[i]   // current letter
+//     i++
 
-    let countStr = ""  // to collect digits for count
+//     let countStr = ""  // to collect digits for count
 
-    while (i < s.length && s[i] >= '0' && s[i] <= '9') {
-    countStr += s[i]
-    i++
-    }
+//     while (i < s.length && s[i] >= '0' && s[i] <= '9') {
+//     countStr += s[i]
+//     i++
+//     }
 
-    let count = countStr === "" ? 1 : Number(countStr)
+//     let count = countStr === "" ? 1 : Number(countStr)
 
-    result += char.repeat(count)
+//     result += char.repeat(count)
   
     
 
-  }
+//   }
 
-  return result
-}
+//   return result
+// }
 
-console.log(decompressString("a2bc5a3")) // should return "aabcccccaaa"
+// console.log(decompressString("a2bc5a3")) // should return "aabcccccaaa"
 
 // Problem 3: Maximum Repeated Character
 
@@ -727,6 +727,34 @@ console.log(decompressString("a2bc5a3")) // should return "aabcccccaaa"
 
 
 // Useful to combine counting + consecutive character logic.
+
+// function maximunRepeatedChar(s) {
+  
+//   let maxCount = 0;
+//   let maxChar = ""
+//   let count = 1
+
+//   for(let i = 1; i < s.length; i++) {
+    
+//     if(s[i] === s[i - 1]) {
+//       count++
+//     }else{
+//       if(count > maxCount) {
+//         maxCount = count
+//         maxChar = s[i - 1]
+//       }
+//       count = 1
+//     }
+
+    
+//   }
+//    if (count > maxCount) {
+//     maxChar = s[s.length - 1];
+//   }
+//   return maxChar
+// }
+
+// console.log(maximunRepeatedChar("aaabbccccdd"))
 
 // Problem 4: Compress & Compare Length
 
@@ -743,6 +771,30 @@ console.log(decompressString("a2bc5a3")) // should return "aabcccccaaa"
 
 // This is exactly like Cracking the Coding Interview’s classic compression problem.
 
+// function compressedString(s) {
+  
+//  let result = ""
+//  let count = 1
+
+
+//  for(let i = 0; i <s.length; i++){
+   
+//   if(s[i] === s[i + 1]) {
+//     count++
+//   }else{
+//     result +=  s[i] + count
+//     count = 1
+//   }
+
+//  }
+
+//  return result.length < s.length ? result : s;
+
+ 
+// }
+
+// console.log(compressedString("abc"))
+
 // Problem 5: Count Consecutive Characters
 
 // Instead of compressing into a string, return an array of objects showing counts.
@@ -754,4 +806,35 @@ console.log(decompressString("a2bc5a3")) // should return "aabcccccaaa"
 
 
 // Helps you practice data structure + compression logic together.
+
+
+function compressedStrObj(s) {
+  
+ let result = []
+ let count = 1
+
+
+ let group = {}
+
+
+ for(let i = 0; i <s.length; i++){
+   
+  if(s[i] === s[i + 1]) {
+    count++
+  }else{
+    let obj = {char: s[i], count: count}
+    result.push(obj)
+    count = 1
+    
+  }
+
+ }
+
+ return result
+
+ 
+}
+
+console.log(compressedStrObj("aabcccccaaa"))
+
 
