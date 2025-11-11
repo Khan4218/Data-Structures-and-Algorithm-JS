@@ -322,27 +322,133 @@
 // Output: null
 
 
-function nonRepeating(s) {
+// function nonRepeating(s) {
   
- let frequency = {}
+//  let frequency = {}
 
-  for(let char of s) {
+//   for(let char of s) {
     
-   frequency[char] = (frequency[char] || 0) + 1 
-  }
+//    frequency[char] = (frequency[char] || 0) + 1 
+//   }
 
-  for(let char of s) {
+//   for(let char of s) {
     
-    if(frequency[char] === 1) {
+//     if(frequency[char] === 1) {
 
-      return char
-    }
-  }
+//       return char
+//     }
+//   }
 
-  return null
+//   return null
 
   
-}
+// }
 
-console.log(nonRepeating("aabbcddee"));
-console.log(nonRepeating("aabbcc"));
+// console.log(nonRepeating("aabbcddee"));
+// console.log(nonRepeating("aabbcc"));
+
+
+// Challenge: Check if Two Strings Have the Same Character Frequency
+
+// Write a function that returns true if two strings contain exactly the same frequency of characters, and false otherwise.
+
+// This is not checking if they are anagrams (we’ll do that next).
+// It’s only about comparing the frequency maps, even if the characters are in different orders.
+
+// Examples:
+
+// Input: "aabbcc", "baccab"
+// Output: true
+
+// Input: "aabbc", "aabbcc"
+// Output: false
+
+// Input: "xyz", "xyzz"
+// Output: false
+
+
+// Requirements:
+
+// Use objects to store character frequencies for both strings.
+
+// Compare both objects to ensure all characters have the same counts.
+
+// Return a boolean (true or false).
+
+// Keep time complexity O(n).
+
+
+// function sameCharFreq(s, t) {
+//   if(s.length !== t.length) return false
+ 
+//   let sObj = {}
+//   let tObj = {}
+
+
+
+//   for(let char of s) {
+//    sObj[char] = (sObj[char] || 0) + 1
+//    sCount = sObj[char] 
+   
+//   }
+
+
+  
+//   for(let char of t) {
+//    tObj[char] = (tObj[char] || 0) + 1    
+//    tCount = tObj[char]
+//   }
+  
+//   for(let key in sObj) {
+//     if(sObj[key] !== tObj[key]) {
+//       return false
+//     }
+//   }
+
+//   return true
+ 
+  
+  
+  
+// }
+
+// console.log(sameCharFreq("aabbcc", "baccab"));
+// console.log(sameCharFreq("aabbc", "aabbcc"));
+// console.log(sameCharFreq("xyz", "xyzz"));
+
+
+// Perfect — here’s your first Anagram Coding Challenge (Basic Version).
+
+// Challenge: Check If Two Strings Are Anagrams
+
+// Write a function that returns true if two strings are anagrams of each other, otherwise returns false.
+
+// Example 1:
+
+// Input: "listen", "silent"
+// Output: true
+
+
+// Example 2:
+
+// Input: "hello", "world"
+// Output: false
+
+
+// Example 3:
+
+// Input: "aabb", "baba"
+// Output: true
+
+// Requirements:
+
+// Use objects (frequency count) to check if both strings have the same characters and frequencies.
+
+// Ignore differences in order — only character counts matter.
+
+// Keep time complexity O(n).
+
+// Assume all lowercase letters for now.
+
+
+
