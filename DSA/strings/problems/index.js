@@ -612,28 +612,146 @@
 // Once you’ve written your solution, run it for:
 
 
-function compressString(str) {
+// function compressString(str) {
 
-  let count = 1
-  let result = ""
+//   let count = 1
+//   let result = ""
 
-   for(let i = 0; i < str.length; i++) {
-    if(str[i] === str[i + 1]){
-     count++
+//    for(let i = 0; i < str.length; i++) {
+//     if(str[i] === str[i + 1]){
+//      count++
       
-   }else{
-     result += str[i] + count
-     count = 1
-   }
+//    }else{
+//      result += str[i] + count
+//      count = 1
+//    }
 
    
+//   }
+//   return result 
+
+// }
+// console.log(compressString("aabcccccaaa"));
+// console.log(compressString("aabbc"));
+// console.log(compressString("abc"));
+
+
+
+// Problem 1: Run-Length Encoding (Basic)
+
+// Compress a string exactly like we did, but ignore counts of 1.
+
+// Example:
+
+// Input: "aabcccccaaa"
+// Output: "a2bc5a3"
+
+
+// Here, single characters (b) don’t show the 1.
+
+// Try writing this variant — it’s a small tweak but common in interviews.
+
+
+// function compressedString(str) {
+   
+//   let count = 1
+//   let result = ""
+//   for(let i = 0; i < str.length; i++) {
+
+
+//     if(str[i] === str[i + 1]) {
+//      count ++
+     
+//     }
+//     else {
+//       result += str[i] + (count > 1 ? count : "" )
+//       count = 1
+//     }
+
+//   }
+
+//   return result
+   
+// }
+// console.log(compressedString("aabcccccaaa"));
+
+
+// Problem 2: Decompress a Compressed String
+
+// Given a compressed string like "a2b1c5a3", expand it back to "aabcccccaaa".
+
+// Example:
+
+// Input: "a2b1c5a3"
+// Output: "aabcccccaaa"
+
+
+// This will help you understand the inverse of compression and improve your string manipulation skills.
+
+function decompressString(s) {
+  let result = ""
+  let i = 0
+
+  while (i < s.length) {
+    let char = s[i]   // current letter
+    i++
+
+    let countStr = ""  // to collect digits for count
+
+    while (i < s.length && s[i] >= '0' && s[i] <= '9') {
+    countStr += s[i]
+    i++
+    }
+
+    let count = countStr === "" ? 1 : Number(countStr)
+
+    result += char.repeat(count)
+  
+    
+
   }
-  return result 
 
+  return result
 }
-console.log(compressString("aabcccccaaa"));
-console.log(compressString("aabbc"));
-console.log(compressString("abc"));
+
+console.log(decompressString("a2bc5a3")) // should return "aabcccccaaa"
+
+// Problem 3: Maximum Repeated Character
+
+// Find the character that has the longest consecutive repetition in a string.
+
+// Example:
+
+// Input: "aaabbccccdd"
+// Output: "c"  (because 'c' repeats 4 times consecutively)
 
 
+// Useful to combine counting + consecutive character logic.
+
+// Problem 4: Compress & Compare Length
+
+// Compress the string using your compression function, but return the original string if the compressed string is not shorter.
+
+// Example:
+
+// Input: "abc" 
+// Compressed: "a1b1c1" → not shorter → return "abc"
+
+// Input: "aabcccccaaa" 
+// Compressed: "a2b1c5a3" → shorter → return compressed
+
+
+// This is exactly like Cracking the Coding Interview’s classic compression problem.
+
+// Problem 5: Count Consecutive Characters
+
+// Instead of compressing into a string, return an array of objects showing counts.
+
+// Example:
+
+// Input: "aabcccccaaa"
+// Output: [ {char: "a", count: 2}, {char: "b", count: 1}, {char: "c", count: 5}, {char: "a", count: 3} ]
+
+
+// Helps you practice data structure + compression logic together.
 
