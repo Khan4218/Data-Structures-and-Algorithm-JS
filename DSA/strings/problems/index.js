@@ -558,5 +558,30 @@
 // Finally, return all the values from the object.
 
 
+function groupOfAnagrams(arr) {
+   
+  let groups = {}
+
+  for(let char of arr) {
+    let key = char.split("").sort().join("")
+    
+    if(!groups[key]) {
+      groups[key] = []
+    
+    }
+    groups[key].push(char)
+
+  }
+
+  
+
+  
+  return Object.values(groups)
+  
+}
+
+console.log(groupOfAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+
+
 
 
