@@ -162,31 +162,187 @@
 // Compare.
 
 
-function isAnagram(s, t) {
+// function isAnagram(s, t) {
 
-  s = s.replace(/\s/g, "").toLowerCase();
-  t = t.replace(/\s/g, "").toLowerCase();
+//   s = s.replace(/\s/g, "").toLowerCase();
+//   t = t.replace(/\s/g, "").toLowerCase();
 
 
 
   
-  if(s.length !== t.length) return false
+//   if(s.length !== t.length) return false
 
-  const count = {}
+//   const count = {}
 
-  for(let char of s){
-    count [char] = (count [char] || 0) + 1 
+//   for(let char of s){
+//     count [char] = (count [char] || 0) + 1 
   
     
-  } 
+//   } 
   
-  for (let char of t) {
-     if(!count[char]) return false
-     count[char] --
+//   for (let char of t) {
+//      if(!count[char]) return false
+//      count[char] --
+//   }
+
+//   return true
+// }
+
+// console.log(isAnagram("Dormitory", "Dirty room")); 
+// console.log(isAnagram("Dormitory", "Dormitory")); 
+
+// Challenge: Find the Most Frequent Character
+
+// Write a JavaScript function that takes a string and returns the character that appears most frequently in it.
+// If multiple characters have the same highest frequency, return any one of them.
+
+// Example:
+
+// Input: "aabbbbccdeee"
+// Output: "b"
+
+
+// Requirements:
+
+// Don’t use built-in methods like reduce or external libraries.
+
+// You can use an object (HashMap) to store frequencies.
+
+// Keep time complexity at O(n).
+
+
+// function frequentCharacter(s) {
+   
+//   let frequency = {}
+   
+//   for(let char of s) {
+//     frequency[char] = (frequency[char] || 0) + 1 
+//   }
+  
+//   let maxCount = 0
+//   let maxChar = ""
+
+//   for(let char in frequency) {
+//     if(frequency[char] > maxCount) {
+//      maxCount = frequency[char]
+
+//      maxChar = char
+ 
+     
+//     }
+    
+//   }
+//   return maxChar
+
+// }
+
+// console.log(frequentCharacter("aabbbbccdeee"));
+
+
+// Challenge: Find All Most Frequent Characters
+
+// Write a function that returns all characters that appear the most number of times in the string.
+
+// Example 1:
+
+// Input: "aabbcc"
+// Output: ["a", "b", "c"]
+
+
+// Example 2:
+
+// Input: "aabbbbccdeee"
+// Output: ["b"]
+
+
+// Example 3:
+
+// Input: "aabbccc"
+// Output: ["c"]
+
+
+// Requirements:
+
+// Use an object to count frequencies (like before).
+
+// Return an array of all characters that share the maximum frequency.
+
+// Keep the solution O(n).
+
+
+// function frequentCharacters(s) {
+  
+//   let frequencyObj = {}
+
+//   for(let char of s) {
+//     frequencyObj[char] = (frequencyObj[char] || 0) + 1
+
+//   }
+  
+//   let maxCount = 0
+
+//   for(let char in frequencyObj) {
+
+//     if(frequencyObj[char] > maxCount) {
+//       maxCount = frequencyObj[char]
+//      maxChar = char
+//     }
+
+//   }
+//   let result = []
+
+//   for(let char in frequencyObj) {
+
+//     if(frequencyObj[char] === maxCount) {
+//       result.push(char)
+//     }
+//   }
+
+//   return result
+// }
+
+// console.log(frequentCharacters("aabbcc"));
+
+
+
+// Challenge: First Non-Repeating Character
+
+// Write a function that returns the first character in a string that appears only once.
+// If every character repeats, return null.
+
+// Example 1:
+
+// Input: "aabbcddee"
+// Output: "c"
+
+
+// Example 2:
+
+// Input: "aabbcc"
+// Output: null
+
+
+function nonRepeating(s) {
+  
+ let frequency = {}
+
+  for(let char of s) {
+    
+   frequency[char] = (frequency[char] || 0) + 1 
   }
 
-  return true
+  for(let char of s) {
+    
+    if(frequency[char] === 1) {
+
+      return char
+    }
+  }
+
+  return null
+
+  
 }
 
-console.log(isAnagram("Dormitory", "Dirty room")); 
-console.log(isAnagram("Dormitory", "Dormitory")); 
+console.log(nonRepeating("aabbcddee"));
+console.log(nonRepeating("aabbcc"));
