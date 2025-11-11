@@ -495,27 +495,68 @@
 // Output: true
 
 
-function isAnagram (s, t) {
+// function isAnagram (s, t) {
 
-  if(s.length !== t.length) return false
+//   if(s.length !== t.length) return false
   
-  let frequency = {}
+//   let frequency = {}
 
-  for(let char of s) {
+//   for(let char of s) {
 
-    frequency[char] = (frequency[char] || 0) + 1 
+//     frequency[char] = (frequency[char] || 0) + 1 
 
-  }
+//   }
 
-  for(let char of t) {
-    if(!frequency[char]) return false 
-    frequency[char] -= 1
-  }
+//   for(let char of t) {
+//     if(!frequency[char]) return false 
+//     frequency[char] -= 1
+//   }
   
-  return true
+//   return true
 
-}
+// }
 
-console.log(isAnagram("listen", "silent"));
+// console.log(isAnagram("listen", "silent"));
+
+
+// 🧠 Explanation Before Coding
+
+// You’re given an array of words. You need to group together all words that are anagrams of each other.
+
+// Example
+// Input: ["eat", "tea", "tan", "ate", "nat", "bat"]
+// Output: [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
+
+// 🧩 Intuition
+
+// Two words are anagrams if their sorted characters are the same.
+
+// "eat" → sort → "aet"
+
+// "tea" → sort → "aet"
+
+// "tan" → sort → "ant"
+
+// So we can:
+
+// Create a hashmap (object).
+
+// Use the sorted version of the word as the key.
+
+// Push each original word into the array under that key.
+
+// 🧱 Steps
+
+// Initialize an empty object groups = {}
+
+// Loop over each word in the input array:
+
+// Sort its letters to form a key.
+
+// Add the word to groups[key].
+
+// Finally, return all the values from the object.
+
+
 
 
