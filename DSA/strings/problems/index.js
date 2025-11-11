@@ -558,30 +558,82 @@
 // Finally, return all the values from the object.
 
 
-function groupOfAnagrams(arr) {
+// function groupOfAnagrams(arr) {
    
-  let groups = {}
+//   let groups = {}
 
-  for(let char of arr) {
-    let key = char.split("").sort().join("")
+//   for(let char of arr) {
+//     let key = char.split("").sort().join("")
     
-    if(!groups[key]) {
-      groups[key] = []
+//     if(!groups[key]) {
+//       groups[key] = []
     
-    }
-    groups[key].push(char)
+//     }
+//     groups[key].push(char)
 
+//   }
+
+  
+
+  
+//   return Object.values(groups)
+  
+// }
+
+// console.log(groupOfAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
+
+
+
+// Challenge 1: Basic String Compression
+
+// Write a function compressString(s) that compresses a given string by replacing consecutive repeated characters with the character followed by its count.
+
+// Example 1:
+
+// Input: "aaabbc"
+// Output: "a3b2c1"
+
+
+// Example 2:
+
+// Input: "aabcccccaaa"
+// Output: "a2b1c5a3"
+
+// Guidelines
+
+// You must use a single loop (no nested loops).
+
+// Use a variable count to track consecutive occurrences.
+
+// Use string concatenation or template literals to build the result.
+
+// Return the final compressed string.
+
+// Once you’ve written your solution, run it for:
+
+
+function compressString(str) {
+
+  let count = 1
+  let result = ""
+
+   for(let i = 0; i < str.length; i++) {
+    if(str[i] === str[i + 1]){
+     count++
+      
+   }else{
+     result += str[i] + count
+     count = 1
+   }
+
+   
   }
+  return result 
 
-  
-
-  
-  return Object.values(groups)
-  
 }
-
-console.log(groupOfAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
-
+console.log(compressString("aabcccccaaa"));
+console.log(compressString("aabbc"));
+console.log(compressString("abc"));
 
 
 
