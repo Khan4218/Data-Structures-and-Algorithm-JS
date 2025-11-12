@@ -180,3 +180,35 @@
 //   const set2 = new Set(arr2);
 //   return arr1.filter(num => set2.has(num));
 // };
+
+
+// 🧩 Challenge 6 — Find the First Repeated Character in a String
+
+// Problem:
+// Given a string, return the first character that appears more than once.
+// If no character repeats, return null.
+
+// Example:
+// Input: "abccba"
+// Output: "c"
+
+// (No hints — try solving it using either a Set or a Map.)
+
+
+function firstRepeatedChar(str) {
+   
+    let set = new Set()
+  
+
+    for(let char of str) {
+     
+        if(set.has(char)) {
+          return char
+        }else{
+            set.add(char)
+        }
+    }
+   return null
+}
+
+console.log(firstRepeatedChar("abccba"));
