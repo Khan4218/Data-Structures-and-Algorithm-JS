@@ -195,20 +195,58 @@
 // (No hints — try solving it using either a Set or a Map.)
 
 
-function firstRepeatedChar(str) {
+// function firstRepeatedChar(str) {
    
-    let set = new Set()
+//     let set = new Set()
   
 
-    for(let char of str) {
+//     for(let char of str) {
      
-        if(set.has(char)) {
-          return char
-        }else{
-            set.add(char)
-        }
-    }
-   return null
-}
+//         if(set.has(char)) {
+//           return char
+//         }else{
+//             set.add(char)
+//         }
+//     }
+//    return null
+// }
 
-console.log(firstRepeatedChar("abccba"));
+// console.log(firstRepeatedChar("abccba"));
+
+
+// 🧩 Challenge 7 — Find the Most Frequent Element
+
+// Problem:
+// Given an array of numbers, return the element that appears the most times.
+// If there’s a tie, return any one of the most frequent elements.
+
+// Example:
+// Input: [1, 2, 2, 3, 1, 2]
+// Output: 2
+
+// (Use a Map to track frequencies — no hints this time!)
+
+function frequentElement(arr) {
+  
+    let frequencies = new Map()
+
+    for(let num of arr) {
+      frequencies.set(num, (frequencies.get(num) || 0) + 1)
+      
+    }
+
+    let maxCount = 0
+    let mostFrequent = null
+  
+   for(let [key,value] of frequencies) {
+     
+    if(value > maxCount ) {
+     maxCount = value
+     mostFrequent = key
+    }
+     
+   }
+   return mostFrequent
+  
+}
+console.log(frequentElement([1,2,2,3,1,2]));
