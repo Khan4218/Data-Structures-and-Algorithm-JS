@@ -55,26 +55,52 @@
 
 // If a number already exists in the set, return true.
 
-function duplicates(arr) {
+// function duplicates(arr) {
  
-   let set = new Set()
+//    let set = new Set()
 
 
-   for(let num of arr) {
+//    for(let num of arr) {
      
-     if(set.has(num)) {
-     return true
-     }else{
-        set.add(num)
-     }
+//      if(set.has(num)) {
+//      return true
+//      }else{
+//         set.add(num)
+//      }
  
     
-   }
+//    }
 
-   return false
+//    return false
 
   
   
+// }
+
+// console.log(duplicates([1, 2, 3, 1]));
+
+
+// Given an array, return an object (or map) showing how many times each element appears.
+
+// Example:
+
+// Input: [1, 2, 2, 3, 1]
+// Output: {1: 2, 2: 2, 3: 1}
+
+
+// Goal:
+// Use a hashmap to count the occurrences of each element in the array.
+
+function countElements(arr) {
+ 
+    let map = new Map()
+
+    for(let num of arr) {
+     
+        map.set(num,(map.get(num) || 0) + 1)
+    }
+    
+   return Object.fromEntries(map)
 }
 
-console.log(duplicates([1, 2, 3, 1]));
+console.log(countElements([1, 2, 2, 3, 1]));
