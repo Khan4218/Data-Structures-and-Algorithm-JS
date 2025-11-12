@@ -91,16 +91,52 @@
 // Goal:
 // Use a hashmap to count the occurrences of each element in the array.
 
-function countElements(arr) {
+// function countElements(arr) {
  
-    let map = new Map()
+//     let map = new Map()
 
-    for(let num of arr) {
+//     for(let num of arr) {
      
-        map.set(num,(map.get(num) || 0) + 1)
-    }
+//         map.set(num,(map.get(num) || 0) + 1)
+//     }
     
-   return Object.fromEntries(map)
-}
+//    return Object.fromEntries(map)
+// }
 
-console.log(countElements([1, 2, 2, 3, 1]));
+// console.log(countElements([1, 2, 2, 3, 1]));
+
+
+// 🧩 Challenge 4 — Remove Duplicates from Array
+// Given an array, return a new array with only unique elements.
+
+// Example:
+// Input: [1, 2, 2, 3, 3]
+// Output: [1, 2, 3]
+
+
+// function removeDuplicates(arr) {
+  
+//     let set = new Set()
+
+
+//     for(let num of arr) {
+//         set.add(num)
+//     }
+
+//     return [...set] 
+// }
+
+// console.log(removeDuplicates([1, 2, 2, 3, 3]));
+
+// second method
+
+
+// function removeDuplicates(arr) {
+  
+//     let set = [...new Set(arr)]
+
+//     return set
+// }
+
+// console.log(removeDuplicates([1, 2, 2, 3, 3]));
+
