@@ -140,3 +140,43 @@
 
 // console.log(removeDuplicates([1, 2, 2, 3, 3]));
 
+
+// 🧩 Challenge 5 — Find Intersection of Two Arrays
+
+// Problem:
+// Given two arrays, return a new array that contains only the elements that appear in both arrays.
+
+// Example:
+// Input: [1, 2, 3, 4] and [3, 4, 5, 6]
+// Output: [3, 4]
+
+// (No hints — try to solve it using Set.)
+
+
+// function interSectionOfArrays(arr1, arr2) {
+   
+//     let set1 = new Set(arr1)
+//     let set2 = new Set(arr2)
+    
+//     let result = new Set()
+
+//     for(let num of set1) {
+    
+//       if(set2.has(num)) {
+        
+//        result.add(num)
+//       }
+//     }
+
+
+//    return [...result] 
+    
+// }
+
+// console.log(interSectionOfArrays([1,2,3,4], [3,4,5,6]));
+
+// // 2nd method
+// const interSectionOfArrays = (arr1, arr2) => {
+//   const set2 = new Set(arr2);
+//   return arr1.filter(num => set2.has(num));
+// };
