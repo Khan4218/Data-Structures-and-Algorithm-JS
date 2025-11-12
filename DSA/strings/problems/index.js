@@ -808,33 +808,81 @@
 // Helps you practice data structure + compression logic together.
 
 
-function compressedStrObj(s) {
+// function compressedStrObj(s) {
   
- let result = []
- let count = 1
+//  let result = []
+//  let count = 1
 
 
- let group = {}
+//  let group = {}
 
 
- for(let i = 0; i <s.length; i++){
+//  for(let i = 0; i <s.length; i++){
    
-  if(s[i] === s[i + 1]) {
-    count++
-  }else{
-    let obj = {char: s[i], count: count}
-    result.push(obj)
-    count = 1
+//   if(s[i] === s[i + 1]) {
+//     count++
+//   }else{
+//     let obj = {char: s[i], count: count}
+//     result.push(obj)
+//     count = 1
     
-  }
+//   }
 
- }
+//  }
 
- return result
+//  return result
 
  
+// }
+
+// console.log(compressedStrObj("aabcccccaaa"))
+
+
+// Problem: Longest Substring Without Repeating Characters
+
+// Input: A string s
+// Output: The length of the longest substring that contains no repeating characters.
+
+// Example 1:
+
+// Input: "abcabcbb"
+// Output: 3
+// Explanation: The longest substring without repeating characters is "abc".
+
+
+// Example 2:
+
+// Input: "bbbbb"
+// Output: 1
+// Explanation: The longest substring without repeating characters is "b".
+
+
+// Example 3:
+
+// Input: "pwwkew"
+// Output: 3
+// Explanation: The longest substring without repeating characters is "wke".
+
+
+function nonRepeatingSubstring(str) {
+
+    let left = 0
+    let maxlength = 0
+    let set = new Set()
+    
+    for(let right = 0; right < str.length; right++) { //a|a,b|a,b,c|=>whileloop triggred| shrink left | window = b,c,a and so on
+       
+        while(set.has(str[right])) {
+          set.delete(str[left])
+          left++
+        }
+
+        set.add(str[right])
+    
+        
+        maxlength = Math.max(maxlength, right - left + 1)
+    }
+  return maxlength
 }
 
-console.log(compressedStrObj("aabcccccaaa"))
-
-
+console.log(nonRepeatingSubstring("abcabcbb"));
