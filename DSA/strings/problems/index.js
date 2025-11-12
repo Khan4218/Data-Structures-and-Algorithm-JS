@@ -864,25 +864,130 @@
 // Explanation: The longest substring without repeating characters is "wke".
 
 
-function nonRepeatingSubstring(str) {
+// function nonRepeatingSubstring(str) {
 
-    let left = 0
-    let maxlength = 0
-    let set = new Set()
+//     let left = 0
+//     let maxlength = 0
+//     let set = new Set()
     
-    for(let right = 0; right < str.length; right++) { //a|a,b|a,b,c|=>whileloop triggred| shrink left | window = b,c,a and so on
+//     for(let right = 0; right < str.length; right++) { //a|a,b|a,b,c|=>whileloop triggred| shrink left | window = b,c,a and so on
        
-        while(set.has(str[right])) {
-          set.delete(str[left])
-          left++
-        }
+//         while(set.has(str[right])) {
+//           set.delete(str[left])
+//           left++
+//         }
 
-        set.add(str[right])
+//         set.add(str[right])
     
         
-        maxlength = Math.max(maxlength, right - left + 1)
+//         maxlength = Math.max(maxlength, right - left + 1)
+//     }
+//   return maxlength
+// }
+
+// console.log(nonRepeatingSubstring("abcabcbb"));
+
+
+// Problem: Find All Anagrams of a Pattern in a String
+
+// Input:
+
+// A string s
+
+// A string p (the pattern)
+
+// Output:
+
+// An array of starting indices in s where an anagram of p begins.
+
+// Example 1:
+
+// Input: s = "cbaebabacd", p = "abc"
+// Output: [0, 6]
+// Explanation:  
+// The substring from index 0 to 2 is "cba", which is an anagram of "abc".  
+// The substring from index 6 to 8 is "bac", which is an anagram of "abc".
+
+
+// Example 2:
+
+// Input: s = "abab", p = "ab"
+// Output: [0, 1, 2]
+// Explanation:  
+// Substrings "ab", "ba", "ab" are all anagrams of "ab".
+
+// hint
+// This problem is based on a fixed-size sliding window.
+
+// The window size = length of the pattern p.
+
+// You slide the window across s, one character at a time, and check if the current window is an anagram of p.
+
+
+function findAnagrams(s, p) {
+  const result = []
+  const pMap = new Map()
+  const sMap = new Map()
+  const patternLen = p.length
+
+  // Step 1: build frequency map for pattern
+  for (let char of p) {
+    pMap.set(char, (pMap.get(char) || 0) + 1)
+  }
+
+  let left = 0
+
+  // Step 2: iterate through string
+  for (let right = 0; right < s.length; right++) {
+    const rightChar = s[right]
+    sMap.set(rightChar, (sMap.get(rightChar) || 0) + 1)
+
+    // Step 3: shrink window if size > pattern length
+    if (right - left + 1 > patternLen) {
+      const leftChar = s[left]
+      sMap.set(leftChar, sMap.get(leftChar) - 1)
+      if (sMap.get(leftChar) === 0) sMap.delete(leftChar)
+      left++
     }
-  return maxlength
+
+    // Step 4: compare maps if window size matches pattern length
+    if (right - left + 1 === patternLen) {
+      let isEqual = true
+      if (pMap.size === sMap.size) {
+        for (let [key, val] of pMap) {
+          if (sMap.get(key) !== val) {
+            isEqual = false
+            break
+          }
+        }
+      } else {
+        isEqual = false
+      }
+
+      if (isEqual) result.push(left)
+    }
+  }
+
+  return result
 }
 
-console.log(nonRepeatingSubstring("abcabcbb"));
+// Example:
+console.log(findAnagrams("cbaebabacd", "abc"))  // Output: [0, 6]
+
+// Here’s the dry run table for findAnagrams("cbaebabacd", "abc") — you’ll see exactly how the sliding
+
+// | Step | Left | Right | Current Window | Added Char | sMap (after update) | Action / Comparison | Result |
+// | ---- | ---- | ----- | -------------- | ---------- | ------------------- | ------------------- | ------ |
+// | 1    | 0    | 0     | "c"            | c          | { c:1 }             | window < p.length   | []     |
+// | 2    | 0    | 1     | "cb"           | b          | { c:1, b:1 }        | window < p.length   | []     |
+// | 3    | 0    | 2     | "cba"          | a          | { c:1, b:1, a:1 }   | equal to pMap ✅     | [0]    |
+// | 4    | 0→1  | 3     | "bae"          | e          | { b:1, a:1, e:1 }   | not equal ❌         | [0]    |
+// | 5    | 1→2  | 4     | "aeb"          | b          | { b:1, a:1, e:1 }   | not equal ❌         | [0]    |
+// | 6    | 2→3  | 5     | "eba"          | a          | { b:1, a:1, e:1 }   | not equal ❌         | [0]    |
+// | 7    | 3→4  | 6     | "bab"          | b          | { b:2, a:1 }        | not equal ❌         | [0]    |
+// | 8    | 4→5  | 7     | "aba"          | a          | { b:1, a:2 }        | not equal ❌         | [0]    |
+// | 9    | 5→6  | 8     | "bac"          | c          | { b:1, a:1, c:1 }   | equal ✅             | [0,6]  |
+// | 10   | 6→7  | 9     | "acd"          | d          | { a:1, c:1, d:1 }   | not equal ❌         | [0,6]  |
+
+
+
