@@ -48,7 +48,14 @@ class LinkedList{
         }
         current.next = newNode
          
-     }
+    }
+
+    insertAtBeginning(data) {
+         const newNode = new Node(data)
+         newNode.next = this.head
+         this.head = newNode
+    }
+
 
      print() {
         let current = this.head
@@ -65,4 +72,5 @@ const list = new LinkedList
 list.append(5)
 list.append(10)
 list.append(15)
+list.insertAtBeginning(2)
 list.print()
