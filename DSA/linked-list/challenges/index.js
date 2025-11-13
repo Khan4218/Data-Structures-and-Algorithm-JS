@@ -153,9 +153,23 @@ class LinkedList{
     
   }
 
+  search(value) {
+    let current = this.head
+    let position = 0
 
-  
-
+    while(current) {
+      if(current.data === value) {
+       console.log(`Value: ${value} Found In Position ${position}`);
+       return position
+      }
+      current = current.next
+      position++
+      
+    }
+    console.log(`Value: ${value} not found in the List`);
+    return -1
+    
+  }
 
   print() {
     let current = this.head
@@ -192,6 +206,9 @@ list.print()
 
 list.getNodeLength()
 console.log("finding Length");
+
+console.log("finding position of a value");
+list.search(15)
 
 
 
