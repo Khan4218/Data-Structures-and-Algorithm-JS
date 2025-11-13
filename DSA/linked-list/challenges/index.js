@@ -56,6 +56,33 @@ class LinkedList{
          this.head = newNode
     }
 
+    insertAtPosition(data, position) {
+       const newNode = new Node(data)
+   
+       if(position === 0) {
+          newNode.next = this.head
+          this.head = newNode
+       }
+
+       let current = this.head
+       let count = 0
+
+       while(current && count < position - 1) { 
+         current = current.next
+         count++
+       }
+
+       if(!current) {
+        console.log("position out of bonds");
+        return
+        
+       }
+
+       newNode.next = current.next
+       current.next = newNode
+
+    }
+
 
      print() {
         let current = this.head
@@ -73,4 +100,5 @@ list.append(5)
 list.append(10)
 list.append(15)
 list.insertAtBeginning(2)
+list.insertAtPosition(3,2)
 list.print()
