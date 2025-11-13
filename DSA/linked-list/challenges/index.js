@@ -136,6 +136,23 @@ class LinkedList{
 
   }
 
+  getNodeLength() {
+    
+    let count = 0;
+    let current = this.head
+
+    while(current) {
+      count++
+      current = current.next
+
+    }
+
+    console.log(`Length of the node ${count}`);
+    return count
+
+    
+  }
+
 
   
 
@@ -172,6 +189,10 @@ list.print()
 console.log("Delete at position");
 list.deleteAtPosition(2)
 list.print()
+
+list.getNodeLength()
+console.log("finding Length");
+
 
 
 
