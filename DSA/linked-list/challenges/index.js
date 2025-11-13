@@ -171,6 +171,28 @@ class LinkedList{
     
   }
 
+  updateNodeValue(oldvalue, newvalue) {
+    //     Step-by-step logic
+    // Start from the head node.
+    // Traverse through each node using current = current.next.
+    // If current.data matches the target value:
+    // Replace it with the new value (current.data = newValue).
+    // Print confirmation and stop.
+    // If we reach null, print that the value was not found.
+    let current = this.head
+
+    while(current) {
+      if(current.data === oldvalue) {
+       current.data = newvalue
+       console.log(`updated ${oldvalue} -> ${newvalue}`);
+       return
+      }
+      current = current.next
+    }
+     console.log(`${oldvalue} Not Found In the List`);
+    
+  }
+
   print() {
     let current = this.head
     while(current) {
@@ -192,6 +214,9 @@ list.append(7)
 console.log("Main");
 list.print()
 
+console.log("\n update Node Value");
+list.updateNodeValue(10,101)
+
 console.log("delete at beginning");
 list.deleteAtBeginning()
 list.print()
@@ -209,6 +234,8 @@ console.log("finding Length");
 
 console.log("finding position of a value");
 list.search(15)
+
+
 
 
 
