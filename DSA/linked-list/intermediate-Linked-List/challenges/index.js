@@ -27,10 +27,25 @@ class LinkedList {
         current.next = newNode
         
     }
-    // Challenge 1: Basic Reverse
-    // Input: 5 → 10 → 15 → 20 → null
-    // Task: Reverse the list iteratively and print the new list.
-    // Expected output: 20 → 15 → 10 → 5 → null
+        //     Challenge 2: Reverse Single Node
+        // Input: 42 → null
+        // Task: Reverse the list iteratively.
+        // Expected output: 42 → null
+        // Edge case check: Ensure your code handles a single-node list.
+    singleNodeReverse(){
+        let next = null
+        let prev = null
+        let current =  this.head
+
+        while(current) {
+         next = current.next
+         current.next = prev
+         prev = current
+         current = next
+        }
+        this.head = prev
+    }
+    
     reverse() {
         let next = null;
         let prev = null;
@@ -55,14 +70,17 @@ class LinkedList {
 }
 
 const list = new LinkedList
-list.append(5)
-list.append(10)
-list.append(15)
-list.append(20)
-console.log("Before Reverse");
-list.print()
-console.log("after Reverse");
-list.reverse()
+// list.append(5)
+// list.append(10)
+// list.append(15)
+// list.append(20)
+// console.log("Before Reverse");
+// list.print()
+// console.log("after Reverse");
+// list.reverse()
+// list.print()
+list.append(42)
+list.singleNodeReverse()
 list.print()
 
 
