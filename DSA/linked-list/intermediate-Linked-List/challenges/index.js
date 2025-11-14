@@ -27,11 +27,25 @@ class LinkedList {
         current.next = newNode
         
     }
-        //     Challenge 2: Reverse Single Node
-        // Input: 42 → null
-        // Task: Reverse the list iteratively.
-        // Expected output: 42 → null
-        // Edge case check: Ensure your code handles a single-node list.
+    // Challenge 3: Reverse Empty List
+    // Input: null
+    // Task: Reverse the list iteratively.
+    // Expected output: null
+    // Edge case check: Ensure your code handles an empty list without errors.
+    reverseEmptyList(){
+     let next = null
+     let prev = null
+     let current = this.head
+
+     while(current) {
+        next = current.next
+        current.next = prev
+        prev = current
+        current = next
+     }
+     this.head = prev
+    }
+
     singleNodeReverse(){
         let next = null
         let prev = null
@@ -79,8 +93,8 @@ const list = new LinkedList
 // console.log("after Reverse");
 // list.reverse()
 // list.print()
-list.append(42)
-list.singleNodeReverse()
+list.append(null)
+list.reverseEmptyList()
 list.print()
 
 
