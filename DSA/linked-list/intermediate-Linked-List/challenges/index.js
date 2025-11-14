@@ -70,6 +70,34 @@ class LinkedList {
         this.head = prev
     }
 
+    reverseFirstKNode(k) {
+      if(k <= 0 || !this.head) return 0
+      if(k === 1) return 1
+
+
+       let current = this.head
+       let prev = null
+       let next = null
+       let count = 0
+      
+       let tailOfReversed = current
+
+       while(current !== null && count < k) {
+         next = current.next
+         current.next = prev
+         prev = current
+         current = next
+         count ++
+       }
+        tailOfReversed.next = current
+      
+        
+        this.head = prev
+
+        return count
+
+    }
+
     print() {
         let current = this.head
         while(current) {
@@ -78,25 +106,31 @@ class LinkedList {
         }
     }
 }
-// Challenge 4: Print Before & After
 
-// Input: 1 → 2 → 3 → 4 → 5 → null
-
-// Task: Print the list before reversal, reverse it iteratively, then print it after reversal.
 
 const list = new LinkedList
-list.append(1)
-list.append(2)
-list.append(3)
-list.append(4)
-list.append(5)
-console.log("Before Reverse");
-list.print()
-console.log("after Reverse");
-list.reverse()
-list.print()
+// list.append(1)
+// list.append(2)
+// list.append(3)
+// list.append(4)
+// list.append(5)
+// console.log("Before Reverse");
+// list.print()
+// console.log("after Reverse");
+// list.reverse()
+// list.print()
 // list.append(null)
 // list.reverseEmptyList()
 // list.print()
+console.log("Before reverse first K Node");
 
+list.append(10)
+list.append(20)
+list.append(30)
+list.append(40)
+list.append(50)
+list.print()
+console.log("After reverse first K node");
 
+list.reverseFirstKNode(3)
+list.print()
