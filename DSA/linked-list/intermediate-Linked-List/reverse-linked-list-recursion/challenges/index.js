@@ -1,23 +1,24 @@
-// Challenge 2
-// Write a recursive function that reverses a linked list but you cannot use a helper function.
-// You must write everything inside one function:
-// handle the base case
-// reverse recursively
-// update this.head
-// return the new head
-// Basically:
-// Do the entire reverse recursively using only one function (no helper).
-// Your Task
+// Input
+
+// Linked list:
+// 1 → 2 → 3 → 4 → 5 → null
+// k = 3
+// Output
+// 3 → 2 → 1 → 4 → 5 → null
+// What you need to do
 // Implement:
-// reverseRecursive() {
-//     // your recursive logic here
-// }
+// reverseFirstKRecursive(k)
 
 // Rules:
-// No helper function allowed.
-// reverseRecursive() must return the new head.
-// It must correctly update this.head.
-// Code must not break if the list is empty or has one node.
+// Reverse only the first k nodes using recursion
+// Rest of the list must stay unchanged
+// Correctly connect the last reversed node to the (k+1)th node
+// Update this.head properly
+// Handle edge cases:
+// k = 0
+// k = 1
+// list empty
+// k > length
 
 class Node{
     constructor(data) {
@@ -73,6 +74,47 @@ class LinkedList{
         node.next = null
         return newNode
     }
+    // Input
+
+    // Linked list:
+    // 1 → 2 → 3 → 4 → 5 → null
+    // k = 3
+    // Output
+    // 3 → 2 → 1 → 4 → 5 → null
+    // What you need to do
+    // Implement:
+    // reverseFirstKRecursive(k)
+
+    // Rules:
+    // Reverse only the first k nodes using recursion
+    // Rest of the list must stay unchanged
+    // Correctly connect the last reversed node to the (k+1)th node
+    // Update this.head properly
+    // Handle edge cases:
+    // k = 0
+    // k = 1
+    // list empty
+    // k > length
+    reverseRecursiveKNodes(k) {
+     
+
+      function helper(node, k) {
+        if(k === 1 || node.next === null) {
+         return {newHead: node, nextNode : node.next}
+        }
+
+        let result = helper(node.next, k - 1)
+        
+        node.next.next = node
+        node.next = result.nextNode
+
+        return {newHead: result.newHead, nextNode : result.nextNode}
+        
+      }
+
+      let result = helper(this.head, k)
+      this.head = result.newHead
+    }
 
     print() {
       let current = this.head
@@ -90,7 +132,9 @@ list.append(2)
 list.append(3)
 list.append(4)
 list.append(5)
-list.reverseRecursiveNoHelper()
+list.reverseRecursiveKNodes(3)
 list.print()
+// list.reverseRecursiveNoHelper()
+// list.print()
 // list.reverseRecursive()
 // list.print()
