@@ -1,13 +1,23 @@
-// Challenge 1 — Reverse a List Recursively (Basic Implementation)
-// Implement a reverseRecursive() method inside your LinkedList class using this exact logic:
-// Base case: if head is null or only one node → return head
-// Recursively call reverseRecursive(head.next)
-// Reverse pointer using: head.next.next = head
-// Set head.next = null
-// Return the new head
-// Task:
-// Write the full working recursive method.
+// Challenge 2
+// Write a recursive function that reverses a linked list but you cannot use a helper function.
+// You must write everything inside one function:
+// handle the base case
+// reverse recursively
+// update this.head
+// return the new head
+// Basically:
+// Do the entire reverse recursively using only one function (no helper).
+// Your Task
+// Implement:
+// reverseRecursive() {
+//     // your recursive logic here
+// }
 
+// Rules:
+// No helper function allowed.
+// reverseRecursive() must return the new head.
+// It must correctly update this.head.
+// Code must not break if the list is empty or has one node.
 
 class Node{
     constructor(data) {
@@ -51,6 +61,19 @@ class LinkedList{
         this.head = this.reverseRecursiveHelper(this.head)
     }
 
+    reverseRecursiveNoHelper(node = this.head) {
+        if(node === null || node.next === null) {
+            this.head = node
+        return node
+        }
+
+        let newNode = this.reverseRecursiveNoHelper(node.next)
+        
+        node.next.next = node
+        node.next = null
+        return newNode
+    }
+
     print() {
       let current = this.head
       while(current){
@@ -67,5 +90,7 @@ list.append(2)
 list.append(3)
 list.append(4)
 list.append(5)
-list.reverseRecursive()
+list.reverseRecursiveNoHelper()
 list.print()
+// list.reverseRecursive()
+// list.print()
