@@ -85,6 +85,25 @@ class LinkedList{
       
     }
 
+    lengthRecursive(node) {
+      if(node === null) return 0
+      return 1 + this.lengthRecursive(node.next)
+    }
+    
+    getNodeAt(node, index) {
+      if(index === 0) return node
+      return this.getNodeAt(node.next, index - 1)
+    }
+
+    findMiddleRecursive(node = this.head){
+      
+      let length = this.lengthRecursive(node)
+      let middleIndex = Math.floor(length / 2)
+
+      return  this.getNodeAt(node, middleIndex).data
+           
+    }
+
     print() {
       let current = this.head
       while(current) {
@@ -104,5 +123,15 @@ list.append(5)
 list.append(6)
 // console.log(list.findFirstMiddle().data)
 // console.log(list.findBothMiddle())
-console.log(list.findMiddleWithoutSlowFastPointer());
+// console.log(list.findMiddleWithoutSlowFastPointer());
+console.log(list.findMiddleRecursive())
+// list.print()
 
+// Challenge 4 (Hard): Middle of linked list using recursion
+// Find middle using recursion only — no loops, no pointers stepping manually.
+
+// (This is tricky, but great practice.)
+
+// function findMiddleRecursive(head) {
+//     // write logic
+// }
