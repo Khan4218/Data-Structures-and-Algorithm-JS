@@ -71,6 +71,20 @@ class LinkedList{
       return result
     }
 
+    findMiddleWithoutSlowFastPointer() {
+       let len = this.length()
+       
+       let mid = Math.floor((len - 1) / 2)
+       let i = 0
+       let current = this.head
+       while(current) {
+         if(i === mid) return current.data
+         current = current.next
+         i++
+       }
+      
+    }
+
     print() {
       let current = this.head
       while(current) {
@@ -89,5 +103,6 @@ list.append(4)
 list.append(5)
 list.append(6)
 // console.log(list.findFirstMiddle().data)
-console.log(list.findBothMiddle())
+// console.log(list.findBothMiddle())
+console.log(list.findMiddleWithoutSlowFastPointer());
 
