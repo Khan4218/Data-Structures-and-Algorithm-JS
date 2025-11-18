@@ -1,16 +1,3 @@
-// Challenge 1 (Basic)
-// Return the data of the Nth node from the end using the two-pointer method.
-
-// Example:
-// List: 1 → 2 → 3 → 4 → 5
-// N = 2
-// Output = 4
-
-// Function:
-
-// findNthFromEnd(n, node = this.head) {
-//     // implement
-// }
 
 class Node{
     constructor(data) {
@@ -41,8 +28,27 @@ class LinkedList{
         }
         current.next = newNode
     }
+
+    length(node = this.head) {
+      let count = 0
+
+      while(node) {
+        count++
+        node = node.next
+      }
+
+      return count
+    }
     
     FindNthNodeFromEnd(n, node = this.head) {
+        if(!node) return null
+        if(n <= 0) return null
+
+        let length = this.length()
+   
+        if(n > length) return null
+        if(n === length) return node.data
+        
         let slow = node
         let fast = node
 
