@@ -64,6 +64,21 @@ class LinkedList{
         }
         return slow
     }
+
+    recursiveNthNode( node = this.head, n) {
+      if(node === null) return {count : 0, result : null}
+
+      let data = this.recursiveNthNode(node.next, n)
+
+      data.count++
+
+      if(data.count === n) {
+        data.result = node
+      }
+
+      return data
+    
+    }
     
     print() {
         let current = this.head
@@ -85,4 +100,6 @@ list.append(4)
 list.append(5)
 list.print()
 console.log(list.FindNthNodeFromEnd(2))
+let recursive = list.recursiveNthNode(list.head, 3).result
+console.log(recursive);
 
