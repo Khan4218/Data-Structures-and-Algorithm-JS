@@ -62,7 +62,7 @@ class LinkedList{
             slow = slow.next
             fast = fast.next
         }
-        return slow.data
+        return slow
     }
     
     print() {
