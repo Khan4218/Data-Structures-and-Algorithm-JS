@@ -2,11 +2,11 @@ Next in Intermediate Linked List Roadmap
 
 Reverse a Linked List (Recursive approach) 
 
-Find the Middle Node (Slow & Fast Pointer)← next topic
+Find the Middle Node (Slow & Fast Pointer)
 
 Find Nth Node from the End (Two-pointer technique)
 
-Detect Loop / Cycle (Floyd’s Cycle Detection)
+Detect Loop / Cycle (Floyd’s Cycle Detection)← next topic
 
 Remove Loop if present
 
