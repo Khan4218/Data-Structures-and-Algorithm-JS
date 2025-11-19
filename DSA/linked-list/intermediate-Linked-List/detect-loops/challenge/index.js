@@ -1,10 +1,10 @@
-// Challenge 1 (Basic)
-// Implement detectLoop() using Floyd’s cycle detection.
+// Challenge 2 (Return meeting point)
+// Modify the function to return the node where slow and fast meet, instead of just true/false.
 
-// detectLoop(node = this.head) {
-//     // return true if loop exists else false
+// detectLoopNode(node = this.head) {
+//     // return meeting node if loop exists
+//     // else return null
 // }
-
 
 class Node{
     constructor(data) {
@@ -34,7 +34,7 @@ class LinkedList{
     }
 
     detectLoop(node = this.head) {
-      if(this.head === null) return false
+      if(!node || !node.next) return null
 
       let slow = node
       let fast = node 
@@ -42,13 +42,11 @@ class LinkedList{
       while (fast !== null && fast.next !== null) {
         slow = slow.next
         fast = fast.next.next
-        console.log(fast);
-        
         if(slow === fast) {
-           return true
+           return slow
         }
       }
-      return false
+      return null
     }
 
     print() {
@@ -70,4 +68,9 @@ list.append(2)
 list.append(1)
 list.print()
 list.head.next.next.next.next.next = list.head.next.next;
-console.log(list.detectLoop());
+let meetNode = list.detectLoop()
+if (meetNode) {
+    console.log("meeting point value", meetNode.data);
+} else {
+    console.log("No loop found");
+}
