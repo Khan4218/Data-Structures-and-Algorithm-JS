@@ -1,6 +1,6 @@
 // stacks use last in first out logic LIFO
 
-class stack {
+export class stack {
     constructor() {
      this.stack = []
 
@@ -37,15 +37,15 @@ class stack {
 
 
 
-const newStack = new stack()
-newStack.push(5)
-newStack.push(4)
-newStack.push(3)
-newStack.push(2)
-console.log(newStack.pop());
-console.log(newStack.peek());
-console.log(newStack.size());
-console.log(newStack.isEmpty());
+// const newStack = new stack()
+// newStack.push(5)
+// newStack.push(4)
+// newStack.push(3)
+// newStack.push(2)
+// console.log(newStack.pop());
+// console.log(newStack.peek());
+// console.log(newStack.size());
+// console.log(newStack.isEmpty());
 
 
 
