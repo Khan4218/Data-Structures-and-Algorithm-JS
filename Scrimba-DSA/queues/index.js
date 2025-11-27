@@ -1,4 +1,4 @@
-class Queue{
+export class Queue{
     constructor() {
         this.queue = []
     }
@@ -18,7 +18,7 @@ class Queue{
          if(this.isEmpty()) {
           throw new Error("Empty Queue")
         }
-        this.queue[0]
+       return this.queue[0]
     }
 
     size() {
@@ -30,15 +30,15 @@ class Queue{
     }
 }
 
-const queue = new Queue()
-queue.enqueue(1)
-queue.enqueue(2)
-queue.enqueue(3)
-queue.enqueue(4)
-console.log(queue.dequeue());
-console.log(queue.peek());
-console.log(queue.size());
-console.log(queue.isEmpty());
+// const queue = new Queue()
+// queue.enqueue(1)
+// queue.enqueue(2)
+// queue.enqueue(3)
+// queue.enqueue(4)
+// console.log(queue.dequeue());
+// console.log(queue.peek());
+// console.log(queue.size());
+// console.log(queue.isEmpty());
 
 
 
