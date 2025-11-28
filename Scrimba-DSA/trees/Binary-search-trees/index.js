@@ -6,9 +6,9 @@ class Node{
     }
 }
 
-function insert(root, value) {
+export function insert(root, value) {
     if(root === null) {
-     return newNode = new Node(value)
+     return new Node(value)
     }
 
    if(root === null){
