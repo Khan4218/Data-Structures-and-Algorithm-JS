@@ -239,3 +239,67 @@ C) O(n²)
 D) O(log n)
 
 5. O(n) we are using while loop time increases with input size 
+
+
+Concept: Character Frequency Counting
+
+This is a foundational technique in DSA and interviews — it appears in problems like:
+
+Finding the first non-repeating character
+
+Checking if two strings are anagrams
+
+Character compression
+
+Frequency-based sorting
+
+Example 1: Basic frequency counter
+function charFrequency(str) {
+  const freq = {};
+
+  for (let char of str) {
+    freq[char] = (freq[char] || 0) + 1;
+  }
+
+  return freq;
+}
+
+console.log(charFrequency("hello"));
+
+
+Output:
+
+{ h: 1, e: 1, l: 2, o: 1 }
+
+Step-by-step explanation
+
+const freq = {} → creates an empty object to store counts.
+
+for (let char of str) → loops through each character in the string.
+
+freq[char] = (freq[char] || 0) + 1 →
+
+If char doesn’t exist yet, (freq[char] || 0) is 0.
+
+Adds 1 each time the same character appears.
+
+Returns the frequency map.
+
+Example 2: Ignoring spaces and case
+function charFrequencyClean(str) {
+  str = str.replace(/\s/g, "").toLowerCase();
+  const freq = {};
+
+  for (let char of str) {
+    freq[char] = (freq[char] || 0) + 1;
+  }
+
+  return freq;
+}
+
+console.log(charFrequencyClean("Hello World"));
+
+
+Output:
+
+{ h: 1, e: 1, l: 3, o: 2, w: 1, r: 1, d: 1 }
